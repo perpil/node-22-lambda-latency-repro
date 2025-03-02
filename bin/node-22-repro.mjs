@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-const cdk = require('aws-cdk-lib');
-const { Node22ReproStack } = require('../lib/node-22-repro-stack');
+import * as cdk from 'aws-cdk-lib';
+import { Node22ReproStack } from '../lib/node-22-repro-stack.mjs';
 
 const app = new cdk.App();
 new Node22ReproStack(app, 'Node22ReproStack', {

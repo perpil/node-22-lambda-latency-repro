@@ -1,0 +1,27 @@
+diff --git a/node_modules/@smithy/node-http-handler/dist-es/node-http-handler.js b/node_modules/@smithy/node-http-handler/dist-es/node-http-handler.js
+index f0ca1e7..050d8f6 100644
+--- a/node_modules/@smithy/node-http-handler/dist-es/node-http-handler.js
++++ b/node_modules/@smithy/node-http-handler/dist-es/node-http-handler.js
+@@ -1,6 +1,6 @@
+ import { HttpResponse } from "@smithy/protocol-http";
+ import { buildQueryString } from "@smithy/querystring-builder";
+-import { Agent as hAgent, request as hRequest } from "http";
++//import { Agent as hAgent, request as hRequest } from "http";
+ import { Agent as hsAgent, request as hsRequest } from "https";
+ import { NODEJS_TIMEOUT_ERROR_CODES } from "./constants";
+ import { getTransformedHeaders } from "./get-transformed-headers";
+@@ -65,10 +65,10 @@ or increase socketAcquisitionWarningTimeout=(millis) in the NodeHttpHandler conf
+             requestTimeout: requestTimeout ?? socketTimeout,
+             socketAcquisitionWarningTimeout,
+             httpAgent: (() => {
+-                if (httpAgent instanceof hAgent || typeof httpAgent?.destroy === "function") {
+-                    return httpAgent;
+-                }
+-                return new hAgent({ keepAlive, maxSockets, ...httpAgent });
++                // if (httpAgent instanceof hAgent || typeof httpAgent?.destroy === "function") {
++                //     return httpAgent;
++                // }
++                // return new hAgent({ keepAlive, maxSockets, ...httpAgent });
+             })(),
+             httpsAgent: (() => {
+                 if (httpsAgent instanceof hsAgent || typeof httpsAgent?.destroy === "function") {
