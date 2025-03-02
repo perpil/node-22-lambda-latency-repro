@@ -42,8 +42,8 @@ Hit the url to trigger a coldstart.
 ### To patch and deploy the SDK on Node 22:
 
 ```
-`npx patch-package`
-`npx cdk deploy`
+npx patch-package
+npx cdk deploy
 ```
 
 ### To remove the patch:
@@ -55,7 +55,7 @@ npx cdk deploy
 
 ### To change the runtime to Node 20
 
-There shouldn't be any need to do this since I've benchmarked it for you, but if you want to see it for yourself, modify the `lib/node-22-repro-stack.mjs` line 22 to `NODEJS_20_X`.  Then `npx cdk deploy`.
+There shouldn't be any need to do this since I've benchmarked it for you, but if you want to see it for yourself, modify the [`lib/node-22-repro-stack.mjs` line 22](https://github.com/perpil/node-22-lambda-latency-repro/blob/1c4a28e8533af4759049bf432aafcae41a0a8566/lib/node-22-repro-stack.mjs#L22) to `NODEJS_20_X`.  Then `npx cdk deploy`.
 
 ## Triggering a coldstart
 
