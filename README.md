@@ -65,11 +65,11 @@ Once you've deployed the stack you can trigger a coldstart by hitting the url in
 Run the following CloudWatch Insights Query on `/aws/lambda/Node22Benchmark` to collate the results:
 
 ```
-filter @message like /REPORT|_aws/ |
-stats latest(@initDuration) as initDuration, sortslast(node) as nodeVersion by coalesce(@requestId,requestId)|
-filter ispresent(initDuration) |
-display initDuration, nodeVersion
-| order by initDuration
+filter @message like /REPORT|_aws/ 
+| stats latest(@initDuration) as initDuration, sortslast(node) as nodeVersion, sortslast(version) as swVersion by coalesce(@requestId,requestId)|
+ filter ispresent(initDuration) |
+ display initDuration, nodeVersion, swVersion
+ | order by initDuration
 ```
 
 ## Cleaning up
