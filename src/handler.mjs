@@ -1,4 +1,5 @@
 import { Metrics, MetricUnit } from "@aws-lambda-powertools/metrics";
+import { Utility } from "@aws-lambda-powertools/commons";
 import { statSync } from "fs";
 import { GetCallerIdentityCommand, STSClient } from "@aws-sdk/client-sts";
 
@@ -7,7 +8,11 @@ const metrics = new Metrics({
   serviceName: "node22",
 });
 
-const stsClient = new STSClient({ region: process.env.AWS_REGION });
+const stsClient = new STSClient({
+  region: process.env.AWS_REGION
+});
+
+const utility = new Utility();
 
 export const handler = async (event, context) => {
   let size, runtimeBuildDate;
@@ -25,7 +30,7 @@ export const handler = async (event, context) => {
   let success = 0;
   try {
     metrics.addMetadata("node", process.version);
-    let coldstart = metrics.isColdStart();
+    let coldstart = utility.getColdStart();
     metrics.addMetadata("coldstart", coldstart);
     metrics.addMetadata("sdkVersion", process.env.sdkVersion);
     metrics.addMetadata("requestId", context.awsRequestId);
