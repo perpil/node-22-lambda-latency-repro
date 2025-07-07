@@ -1,6 +1,6 @@
 # AWS Javascript SDK v3 Lambda Node 22 Benchmark
 
-This is to repro demonstrating the coldstart performance regression of Node 22 with the AWS Javascript SDK.  Compared to Node 20, the coldstart time is ~50 ms slower. It appears related to the SDK unnecessarily loading the http `Request` bits similar to the root cause on [SDK #6144](https://github.com/aws/aws-sdk-js-v3/issues/6144).
+This is to repro demonstrating the coldstart performance regression of Node 22 with the AWS Javascript SDK [SDK #6914](https://github.com/aws/aws-sdk-js-v3/issues/6914). Compared to Node 20, the coldstart time is ~50 ms slower. It appears related to the SDK unnecessarily loading the http `Request` bits similar to the root cause on [SDK #6144](https://github.com/aws/aws-sdk-js-v3/issues/6144).
 
 ## Code notes
 The lambda function makes a `GetCallerIdentity` call to STS using https and logs some metadata [src/handler.mjs](src/handler.mjs).  It is fronted by a Lambda Function url.
