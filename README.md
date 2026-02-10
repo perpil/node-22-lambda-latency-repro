@@ -7,7 +7,7 @@ The lambda function makes a `GetCallerIdentity` call to STS using https and logs
 
 The CDK stack uses esbuild to bundle the function and marks a few unnecessary packages as external. It doesn't do any minification. [lib/node-22-repro-stack.mjs](lib/node-22-repro-stack.mjs).
 
-[The SDK patch](patches/@smithy+node-http-handler+4.0.3.patch) is a hack job to remove the http Request/http Agent bits. The real fix is probably to use lazy loading, but since I'm using https only, this is enough to demonstrate the latency that it adds.
+[The SDK patch](patches/@smithy+node-http-handler+4.4.9.patch) uses require instead of import to load http.
 
 ## Benchmarks
 

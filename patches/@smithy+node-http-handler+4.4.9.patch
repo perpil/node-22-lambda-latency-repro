@@ -1,0 +1,12 @@
+diff --git a/node_modules/@smithy/node-http-handler/dist-es/node-http-handler.js b/node_modules/@smithy/node-http-handler/dist-es/node-http-handler.js
+index 4bc0b55..66d0fed 100644
+--- a/node_modules/@smithy/node-http-handler/dist-es/node-http-handler.js
++++ b/node_modules/@smithy/node-http-handler/dist-es/node-http-handler.js
+@@ -1,6 +1,6 @@
+ import { HttpResponse } from "@smithy/protocol-http";
+ import { buildQueryString } from "@smithy/querystring-builder";
+-import { Agent as hAgent, request as hRequest } from "http";
++const { Agent: hAgent, request: hRequest } = require("node:http");
+ import { Agent as hsAgent, request as hsRequest } from "https";
+ import { NODEJS_TIMEOUT_ERROR_CODES } from "./constants";
+ import { getTransformedHeaders } from "./get-transformed-headers";

@@ -1,8 +1,7 @@
 import { Metrics, MetricUnit } from "@aws-lambda-powertools/metrics";
 import { Utility } from "@aws-lambda-powertools/commons";
 import { statSync } from "fs";
-import { GetCallerIdentityCommand, STSClient } from "@aws-sdk/client-sts";
-
+import { /*GetCallerIdentityCommand,*/ STSClient } from "@aws-sdk/client-sts";
 const metrics = new Metrics({
   namespace: "benchmark",
   serviceName: "node22",
@@ -47,7 +46,7 @@ export const handler = async (event, context) => {
     };
   } finally {
     metrics.addMetadata("latency", Date.now() - startTime);
-    metrics.addMetric("fault", 1-success, MetricUnit.Count);
+    metrics.addMetric("fault", MetricUnit.Count, 1-success);
     metrics.publishStoredMetrics();
   }
 };

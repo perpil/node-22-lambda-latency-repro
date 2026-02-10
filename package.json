@@ -6,17 +6,19 @@
   },
   "scripts": {
     "unpatch": "patch-package --reverse",
-    "patch": "patch-package"
+    "patch": "patch-package",
+    "dir": "open `ls -dt cdk.out/asset* | head -n 1`"
   },
   "devDependencies": {
-    "aws-cdk": "2.1000.3",
-    "esbuild": "^0.25.0"
+    "aws-cdk": "^2.1105.0",
+    "esbuild": "^0.27.3"
   },
   "dependencies": {
-    "@aws-lambda-powertools/metrics": "^2.15",
-    "@aws-sdk/client-sts": "^3.750.0",
-    "aws-cdk-lib": "2.180.0",
-    "constructs": "^10.0.0",
-    "patch-package": "^8.0.0"
+    "@aws-lambda-powertools/metrics": "^2.30",
+    "@aws-sdk/client-dynamodb": "^3.986.0",
+    "@aws-sdk/client-sts": "^3.986.0",
+    "aws-cdk-lib": "^2.238.0",
+    "constructs": "^10.4.5",
+    "patch-package": "^8.0.1"
   }
 }
